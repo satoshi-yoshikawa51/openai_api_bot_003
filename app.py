@@ -68,10 +68,10 @@ st.markdown(custom_css, unsafe_allow_html=True)
 
 # ユーザーインターフェイスの構築
 st.image("company_policy.gif")
-st.markdown("<p style='font-size:14px;'>知りたい会社のルールに対して質問してください。<br>尚、現在は「PC利用に関するルール」「交通費に関するルール」「経費に関するルール」しか学習していない為、それ以外には答えられません。<br>※このルールはダミーです。</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-size:14px;'>知りたい会社のルールに関する質問を入力してください。<br>尚、現在は「PC利用に関するルール」「交通費に関するルール」「経費に関するルール」しか学習していない為、それ以外には答えられません。<br>※このルールは一般のIT会社を想定したAIが作ったダミーのルールです。</p>", unsafe_allow_html=True)
 
 
-user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
+user_input = st.text_input( key="user_input", on_change=communicate)
 
 if st.session_state["messages"]:
     messages = st.session_state["messages"]
