@@ -55,7 +55,7 @@ def communicate():
 # ユーザーインターフェイスの構築
 st.markdown("<h1 style='font-size:24px;'>会社のルールに対してお答えします！</h1>", unsafe_allow_html=True)
 st.image("company_policy.gif")
-st.markdown("<p style='font-size:14px;'>知りたい会社のルールに対して質問してください。尚、現在は「PC利用に関するルール」「交通費に関するルール」「経費に関するルール」しか学習していない為、それ以外には答えられません。※このルールはダミーです。</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-size:14px;'>知りたい会社のルールに対して質問してください。  \n尚、現在は「PC利用に関するルール」「交通費に関するルール」「経費に関するルール」しか学習していない為、それ以外には答えられません。  \n※このルールはダミーです。</p>", unsafe_allow_html=True)
 
 user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
