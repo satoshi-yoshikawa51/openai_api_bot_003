@@ -28,6 +28,8 @@ system_prompt = """
 と答えてください。ファイルの内容で回答できない場合の回答は一言一句変更しないでください。
 """
 
+system_prompt += external_data  # 外部ファイルの情報を追加
+
 # st.session_stateを使いメッセージのやりとりを保存
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
@@ -41,7 +43,7 @@ def communicate():
     user_message = {"role": "user", "content": st.session_state["user_input"]}
     messages.append(user_message)
 
-    response = openai.ChatCompletion.create(
+    response = openai.ChatCompletion.create(  # 関数名を修正
         model="gpt-3.5-turbo",
         messages=messages
     )
@@ -50,7 +52,6 @@ def communicate():
     messages.append(bot_message)
 
     st.session_state["user_input"] = ""  # 入力欄を消去
-
 
 # ユーザーインターフェイスの構築
 st.title("会社のルールに対してお答えします！")
