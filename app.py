@@ -54,7 +54,7 @@ def communicate():
 # カスタムスタイルを適用するためのHTMLコード
 custom_css = """
 <style>
-    body {
+    .reportview-container .main .block-container {
         background-color: #689F91; /* ここで背景色を指定 */
     }
 </style>
