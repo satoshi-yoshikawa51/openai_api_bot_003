@@ -9,7 +9,7 @@ openai.api_key = st.secrets.OpenAIAPI.openai_api_key
 file_names = ["example1.txt", "example2.txt", "example3.txt"]
 external_data = ""
 
-for file_name in file_names:company policy
+for file_name in file_names:
     with open(file_name, "r") as f:
         external_data += f.read() + "\n"
 
@@ -53,9 +53,9 @@ def communicate():
 
 
 # ユーザーインターフェイスの構築
-st.title(" 「レシピ」を考えるチャットボット")
+st.title("会社のルールに対してお答えします！")
 st.image("company_policy.gif")
-st.write("どんな食事を作りたいですか？")
+st.write("知りたい会社のルールに対して質問してください。尚、現在は「PC利用に関するルール」「交通費に関するルール」「経費に関するルール」しか学習していない為、それ以外には答えられません。※このルールはダミーです。")
 
 user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
