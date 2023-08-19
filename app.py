@@ -51,6 +51,17 @@ def communicate():
 
     st.session_state["user_input"] = ""  # 入力欄を消去
 
+# カスタムスタイルを適用するためのHTMLコード
+custom_css = """
+<style>
+    body {
+        background-color: #689F91; /* ここで背景色を指定 */
+    }
+</style>
+"""
+
+# カスタムスタイルを適用
+st.markdown(custom_css, unsafe_allow_html=True)
 
 # ユーザーインターフェイスの構築
 st.markdown("<h1 style='font-size:24px;'>会社のルールに対してお答えします！</h1>", unsafe_allow_html=True)
