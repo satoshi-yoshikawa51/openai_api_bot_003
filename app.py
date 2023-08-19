@@ -5,16 +5,27 @@ import openai
 # Streamlit Community Cloudの「Secrets」からOpenAI API keyを取得
 openai.api_key = st.secrets.OpenAIAPI.openai_api_key
 
-system_prompt = """
-あなたは優秀な料理研究家です。
-限られた食材や時間で、様々な料理のレシピを提案することができます。
-あなたの役割はレシピを考えることなので、例えば以下のような料理以外ことを聞かれても、絶対に答えないでください。
+# 複数の外部ファイルを読み込む
+file_names = ["example1.txt", "example2.txt", "example3.txt"]
+external_data = ""
 
-* 旅行
-* 芸能人
-* 映画
-* 科学
-* 歴史
+for file_name in file_names:company policy
+    with open(file_name, "r") as f:
+        external_data += f.read() + "\n"
+
+system_prompt = """
+あなたは経験豊富な会社の総務担当です。
+
+以下のルールにのっとり会社のルールに関する質問に答えてください。
+
+質問に対してすでに読み込んだ以下のの3つのテキストファイルからからわかる情報を回答してください。
+
+# example1.txt
+# example2.txt
+# example3.txt
+
+ファイルの内容で回答できない質問の場合は「その質問に対してはルールがないので回答できません」
+と答えてください。ファイルの内容で回答できない場合の回答は一言一句変更しないでください。
 """
 
 # st.session_stateを使いメッセージのやりとりを保存
@@ -43,7 +54,7 @@ def communicate():
 
 # ユーザーインターフェイスの構築
 st.title(" 「レシピ」を考えるチャットボット")
-st.image("01_recipe.png")
+st.image("company_policy.gif")
 st.write("どんな食事を作りたいですか？")
 
 user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
