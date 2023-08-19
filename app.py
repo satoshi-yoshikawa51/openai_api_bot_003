@@ -28,8 +28,6 @@ system_prompt = """
 と答えてください。ファイルの内容で回答できない場合の回答は一言一句変更しないでください。
 """
 
-system_prompt += external_data  # 外部ファイルの情報を追加
-
 # st.session_stateを使いメッセージのやりとりを保存
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
@@ -43,7 +41,7 @@ def communicate():
     user_message = {"role": "user", "content": st.session_state["user_input"]}
     messages.append(user_message)
 
-    response = openai.ChatCompletion.create(  # 関数名を修正
+    response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=messages
     )
@@ -53,11 +51,11 @@ def communicate():
 
     st.session_state["user_input"] = ""  # 入力欄を消去
 
-# ユーザーインターフェイスの構築
-st.title("会社のルールに対してお答えします！")
-st.image("company_policy.gif")
-st.write("知りたい会社のルールに対して質問してください。\n尚、現在は「PC利用に関するルール」「交通費に関するルール」「経費に関するルール」しか学習していない為、それ以外には答えられません。\n※このルールはダミーです。")
 
+# ユーザーインターフェイスの構築
+st.markdown("<h1 style='font-size:24px;'>会社のルールに対してお答えします！</h1>", unsafe_allow_html=True)
+st.image("company_policy.gif")
+st.markdown("<p style='font-size:14px;'>知りたい会社のルールに対して質問してください。尚、現在は「PC利用に関するルール」「交通費に関するルール」「経費に関するルール」しか学習していない為、それ以外には答えられません。※このルールはダミーです。</p>", unsafe_allow_html=True)
 
 user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
